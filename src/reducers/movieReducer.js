@@ -37,7 +37,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         nominations: state.nominations.filter(
-          (movie) => movie.id !== action.payload.id
+          (movie) => movie.imdbID !== action.payload.imdbID
         )
       };
     case SET_LOADING:
