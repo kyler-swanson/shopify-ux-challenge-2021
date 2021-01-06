@@ -1,5 +1,6 @@
 import {
   SEARCH_MOVIES,
+  CLEAR_MOVIES,
   ADD_NOMINATION,
   DELETE_NOMINATION,
   MOVIES_ERROR,
@@ -22,6 +23,11 @@ export default (state = initialState, action) => {
         movies: action.payload,
         loading: false
       };
+    case CLEAR_MOVIES:
+      return {
+        ...state,
+        movies: null
+      };
     case ADD_NOMINATION:
       return {
         ...state,
@@ -35,6 +41,7 @@ export default (state = initialState, action) => {
         )
       };
     case SET_LOADING:
+      console.log(1);
       return {
         ...state,
         loading: true

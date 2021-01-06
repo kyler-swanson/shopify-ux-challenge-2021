@@ -1,12 +1,15 @@
 import React, { Fragment } from 'react';
+import { connect } from 'react-redux';
+import { searchMovies } from '../actions/movieActions';
+import PropTypes from 'prop-types';
 
 import { Input } from 'antd';
 
 const { Search: AntSearch } = Input;
 
-const Search = () => {
+const Search = ({ searchMovies }) => {
   const onSearch = (value) => {
-    console.log(value);
+    searchMovies(value);
   };
 
   return (
@@ -22,4 +25,8 @@ const Search = () => {
   );
 };
 
-export default Search;
+Search.propTypes = {
+  searchMovies: PropTypes.func.isRequired
+};
+
+export default connect(null, { searchMovies })(Search);
