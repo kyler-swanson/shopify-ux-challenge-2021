@@ -1,15 +1,19 @@
 import React, { Fragment } from 'react';
+import { connect } from 'react-redux';
 
 import Container from './Container';
 import { Layout, Divider, Row, Col } from 'antd';
 import Search from '../Search';
 import Movies from '../movies/Movies';
+import Nominations from '../nominations/Nominations';
+import Confetti from 'react-confetti';
 
 const { Content } = Layout;
 
-const BodyContent = () => {
+const BodyContent = ({ movie: { nominations } }) => {
   return (
     <Fragment>
+      {nominations.length === 5 && <Confetti />}
       <Content style={{ backgroundColor: 'white' }}>
         <Container>
           <Divider plain />
@@ -21,7 +25,9 @@ const BodyContent = () => {
             <Col span={12}>
               <Movies />
             </Col>
-            <Col span={12}>Hello</Col>
+            <Col span={12}>
+              <Nominations />
+            </Col>
           </Row>
         </Container>
       </Content>
@@ -29,4 +35,8 @@ const BodyContent = () => {
   );
 };
 
-export default BodyContent;
+const mapStateToProps = (state) => ({
+  movie: state.movie
+});
+
+export default connect(mapStateToProps)(BodyContent);

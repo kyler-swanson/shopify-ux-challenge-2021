@@ -8,6 +8,8 @@ import { LikeOutlined, SmileOutlined } from '@ant-design/icons';
 const { Text } = Typography;
 
 const MovieItem = ({ movie, nominations, addNomination }) => {
+  const isNominated = nominations.some((m) => m.imdbID === movie.imdbID);
+
   const onNomination = () => {
     addNomination(movie);
 
@@ -29,16 +31,14 @@ const MovieItem = ({ movie, nominations, addNomination }) => {
           <Text>{movie.Title}</Text> {movie.Year}
         </Text>
       </Space>
-      <Tooltip title={nominations.includes(movie) ? 'Nominated!' : 'Nominate'}>
+      <Tooltip title={isNominated ? 'Nominated!' : 'Nominate'}>
         <Button
           type='primary'
           style={{ float: 'right' }}
           shape='circle'
           onClick={onNomination}
-          disabled={nominations.includes(movie)}
-          icon={
-            nominations.includes(movie) ? <SmileOutlined /> : <LikeOutlined />
-          }
+          disabled={isNominated}
+          icon={isNominated ? <SmileOutlined /> : <LikeOutlined />}
         />
       </Tooltip>
     </Fragment>
