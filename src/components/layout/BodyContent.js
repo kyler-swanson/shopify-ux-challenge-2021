@@ -6,14 +6,12 @@ import { Layout, Divider, Row, Col } from 'antd';
 import Search from '../Search';
 import Movies from '../movies/Movies';
 import Nominations from '../nominations/Nominations';
-import Confetti from 'react-confetti';
 
 const { Content } = Layout;
 
 const BodyContent = ({ movie: { nominations } }) => {
   return (
     <Fragment>
-      {nominations.length === 5 && <Confetti />}
       <Content style={{ backgroundColor: 'white' }}>
         <Container>
           <Divider plain />

@@ -3,6 +3,7 @@ import React, { Fragment } from 'react';
 import { Row, Col } from 'antd';
 
 const Container = ({ children }) => {
+  //@todo make more responsive
   return (
     <Fragment>
       <Row>

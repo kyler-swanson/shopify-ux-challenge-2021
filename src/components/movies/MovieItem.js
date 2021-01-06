@@ -3,8 +3,16 @@ import { connect } from 'react-redux';
 import { addNomination } from '../../actions/movieActions';
 import PropTypes from 'prop-types';
 
-import { Typography, Avatar, Space, Button, Tooltip, notification } from 'antd';
-import { LikeOutlined, SmileOutlined } from '@ant-design/icons';
+import {
+  Typography,
+  Avatar,
+  Space,
+  Button,
+  Tooltip,
+  notification,
+  Modal
+} from 'antd';
+import { LikeOutlined, SmileOutlined, FireTwoTone } from '@ant-design/icons';
 const { Text } = Typography;
 
 const MovieItem = ({ movie, nominations, addNomination }) => {
@@ -12,6 +20,14 @@ const MovieItem = ({ movie, nominations, addNomination }) => {
 
   const onNomination = () => {
     addNomination(movie);
+
+    if (nominations.length + 1 === 5) {
+      Modal.info({
+        icon: <FireTwoTone twoToneColor='#ffae00' />,
+        title: 'And the picks are in...',
+        content: "You've nominated 5 movies for The Shoppies!"
+      });
+    }
 
     notification['success']({
       message: 'Movie Nominated',
