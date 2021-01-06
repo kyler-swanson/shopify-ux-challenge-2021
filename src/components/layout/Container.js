@@ -6,7 +6,7 @@ const Container = ({ children }) => {
   return (
     <Fragment>
       <Row>
-        <Col span={20} offset={2}>
+        <Col span={12} offset={6}>
           {children}
         </Col>
       </Row>
