@@ -1,22 +1,31 @@
 import React, { Fragment } from 'react';
-import { Typography, Layout, Space } from 'antd';
+import PropTypes from 'prop-types';
+
+import { Layout, Space } from 'antd';
 import Container from './Container';
 
 const { Header } = Layout;
-const { Title } = Typography;
 
-const NavBar = () => {
+const NavBar = ({ title }) => {
   return (
     <Fragment>
-      <Header style={{ backgroundColor: 'white' }}>
+      <Header style={{ backgroundColor: 'white', padding: '0' }}>
         <Container>
           <Space direction='vertical'>
-            <Title level={3}>The Shoppies</Title>
+            <h1>{title}</h1>
           </Space>
         </Container>
       </Header>
     </Fragment>
   );
+};
+
+NavBar.propTypes = {
+  title: PropTypes.string.isRequired
+};
+
+NavBar.defaultProps = {
+  title: 'The Shoppies'
 };
 
 export default NavBar;
