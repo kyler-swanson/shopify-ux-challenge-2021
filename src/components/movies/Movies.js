@@ -19,6 +19,7 @@ const Movies = ({ movie: { movies, search, loading } }) => {
       )}
     </>
   );
+
   return (
     <Card title={cardTitle} loading={loading}>
       {movies === null ? (

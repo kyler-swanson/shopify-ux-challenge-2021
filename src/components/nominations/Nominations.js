@@ -2,12 +2,23 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { Card, Empty, List } from 'antd';
+import { Typography, Card, Empty, List } from 'antd';
 import NominationItem from './NominationItem';
 
+const { Text } = Typography;
+
 const Nominations = ({ nominations }) => {
+  const cardTitle = (
+    <>
+      Nominations{' '}
+      <Text type='secondary' style={{ fontSize: '14px' }}>
+        ({nominations.length} / 5)
+      </Text>
+    </>
+  );
+
   return (
-    <Card title='Nominations'>
+    <Card title={cardTitle}>
       {nominations.length === 0 ? (
         <Empty description='No nominations...' />
       ) : (
