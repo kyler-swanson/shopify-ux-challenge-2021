@@ -1,19 +1,10 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { addNomination } from '../../actions/movieActions';
 import PropTypes from 'prop-types';
 
-import {
-  Typography,
-  Avatar,
-  Space,
-  Button,
-  Tooltip,
-  notification,
-  Modal
-} from 'antd';
+import { Avatar, List, Button, Tooltip, notification, Modal } from 'antd';
 import { LikeOutlined, SmileOutlined, FireTwoTone } from '@ant-design/icons';
-const { Text, Link } = Typography;
 
 const MovieItem = ({ movie, nominations, addNomination }) => {
   const { imdbID, Title, Year, Poster } = movie;
@@ -41,28 +32,27 @@ const MovieItem = ({ movie, nominations, addNomination }) => {
     });
   };
 
+  const nominationButton = (
+    <Tooltip title={isNominated ? 'Nominated!' : 'Nominate'}>
+      <Button
+        type='primary'
+        style={{ float: 'right' }}
+        shape='circle'
+        onClick={onNomination}
+        disabled={isNominated}
+        icon={isNominated ? <SmileOutlined /> : <LikeOutlined />}
+      />
+    </Tooltip>
+  );
+
   return (
-    <Fragment>
-      <Space direction='horizontal'>
-        <Avatar src={Poster} />
-        <Text ellipsis type='secondary'>
-          <Link target='_blank' href={`https://www.imdb.com/title/${imdbID}`}>
-            {Title}
-          </Link>{' '}
-          {Year}
-        </Text>
-      </Space>
-      <Tooltip title={isNominated ? 'Nominated!' : 'Nominate'}>
-        <Button
-          type='primary'
-          style={{ float: 'right' }}
-          shape='circle'
-          onClick={onNomination}
-          disabled={isNominated}
-          icon={isNominated ? <SmileOutlined /> : <LikeOutlined />}
-        />
-      </Tooltip>
-    </Fragment>
+    <List.Item actions={[nominationButton]}>
+      <List.Item.Meta
+        avatar={<Avatar src={Poster} />}
+        title={<a href={`https://www.imdb.com/title/${imdbID}`}>{Title}</a>}
+        description={Year}
+      />
+    </List.Item>
   );
 };
 

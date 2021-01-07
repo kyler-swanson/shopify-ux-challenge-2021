@@ -1,13 +1,14 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { deleteNomination } from '../../actions/movieActions';
 import PropTypes from 'prop-types';
 
-import { Typography, Avatar, Space, Button, Tooltip, notification } from 'antd';
+import { Avatar, List, Button, Tooltip, notification } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
-const { Text } = Typography;
 
 const NominationItem = ({ movie, deleteNomination }) => {
+  const { imdbID, Title, Year, Poster } = movie;
+
   const onDelete = () => {
     deleteNomination(movie);
 
@@ -15,30 +16,32 @@ const NominationItem = ({ movie, deleteNomination }) => {
       message: 'Nomination Removed',
       description: (
         <span>
-          You've removed <strong>{movie.Title}</strong> from the nominations!
+          You've removed <strong>{Title}</strong> from the nominations!
         </span>
       )
     });
   };
 
+  const removeButton = (
+    <Tooltip title='Remove'>
+      <Button
+        danger
+        style={{ float: 'right' }}
+        shape='circle'
+        onClick={onDelete}
+        icon={<CloseOutlined />}
+      />
+    </Tooltip>
+  );
+
   return (
-    <Fragment>
-      <Space align='center'>
-        <Avatar src={movie.Poster} />
-        <Text type='secondary'>
-          <Text>{movie.Title}</Text> {movie.Year}
-        </Text>
-      </Space>
-      <Tooltip title='Remove'>
-        <Button
-          danger
-          style={{ float: 'right' }}
-          shape='circle'
-          onClick={onDelete}
-          icon={<CloseOutlined />}
-        />
-      </Tooltip>
-    </Fragment>
+    <List.Item actions={[removeButton]}>
+      <List.Item.Meta
+        avatar={<Avatar src={Poster} />}
+        title={<a href={`https://www.imdb.com/title/${imdbID}`}>{Title}</a>}
+        description={Year}
+      />
+    </List.Item>
   );
 };
 

@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { Typography, Card, Empty, Space } from 'antd';
+import { Typography, Card, Empty, List } from 'antd';
 import MovieItem from './MovieItem';
 
 const { Text } = Typography;
@@ -20,19 +20,17 @@ const Movies = ({ movie: { movies, search, loading } }) => {
     </>
   );
   return (
-    <Fragment>
-      <Card title={cardTitle} loading={loading}>
-        {movies === null ? (
-          <Empty description='No movies found...' />
-        ) : (
-          <Space direction='vertical' style={{ width: '100%' }}>
-            {movies.map((movie) => (
-              <MovieItem key={movie.imdbID} movie={movie} />
-            ))}
-          </Space>
-        )}
-      </Card>
-    </Fragment>
+    <Card title={cardTitle} loading={loading}>
+      {movies === null ? (
+        <Empty description='No movies found...' />
+      ) : (
+        <List
+          itemLayout='horizontal'
+          dataSource={movies}
+          renderItem={(movie) => <MovieItem movie={movie} />}
+        />
+      )}
+    </Card>
   );
 };
 
