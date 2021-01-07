@@ -50,6 +50,7 @@ const NominationItem = ({ id, movie, deleteNomination }) => {
 };
 
 NominationItem.propTypes = {
+  id: PropTypes.number.isRequired,
   movie: PropTypes.object.isRequired,
   deleteNomination: PropTypes.func.isRequired
 };
