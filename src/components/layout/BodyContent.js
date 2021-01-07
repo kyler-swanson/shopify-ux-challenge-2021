@@ -2,19 +2,22 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 
 import Container from './Container';
-import { Layout, Divider, Row, Col } from 'antd';
+import { Layout, Divider, Row, Col, Alert } from 'antd';
 import Search from '../Search';
 import Movies from '../movies/Movies';
 import Nominations from '../nominations/Nominations';
 
 const { Content } = Layout;
 
-const BodyContent = ({ movie: { nominations } }) => {
+const BodyContent = ({ movie: { error } }) => {
   return (
     <Fragment>
       <Content style={{ backgroundColor: 'white' }}>
         <Container>
           <Divider plain />
+
+          {error !== null && <Alert message={error} type='warning' showIcon />}
+
           <Search />
           <Row gutter={[16, 16]} style={{ marginTop: '20px' }}>
             <Col xs={24} lg={12}>

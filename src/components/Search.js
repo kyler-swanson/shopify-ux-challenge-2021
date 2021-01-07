@@ -20,6 +20,7 @@ const Search = ({ searchMovies }) => {
         enterButton
         onSearch={onSearch}
         size='large'
+        style={{ marginTop: '20px' }}
       />
     </Fragment>
   );

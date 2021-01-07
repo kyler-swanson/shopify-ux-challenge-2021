@@ -23,13 +23,15 @@ export default (state = initialState, action) => {
         ...state,
         movies: action.payload.data,
         search: action.payload.text,
-        loading: false
+        loading: false,
+        error: null
       };
     case CLEAR_MOVIES:
       return {
         ...state,
         movies: null,
-        search: ''
+        search: '',
+        error: null
       };
     case ADD_NOMINATION:
       return {
