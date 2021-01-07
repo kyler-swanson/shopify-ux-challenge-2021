@@ -2,13 +2,26 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { Card, Empty, Space } from 'antd';
+import { Typography, Card, Empty, Space } from 'antd';
 import MovieItem from './MovieItem';
 
-const Movies = ({ movie: { movies, loading } }) => {
+const { Text } = Typography;
+
+const Movies = ({ movie: { movies, search, loading } }) => {
+  const cardTitle = (
+    <>
+      Movies
+      {search.length > 0 && (
+        <Text type='secondary' style={{ fontSize: '14px' }}>
+          <br />
+          Showing results for "{search}"
+        </Text>
+      )}
+    </>
+  );
   return (
     <Fragment>
-      <Card title='Movies' loading={loading}>
+      <Card title={cardTitle} loading={loading}>
         {movies === null ? (
           <Empty description='No movies found...' />
         ) : (

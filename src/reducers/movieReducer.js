@@ -10,6 +10,7 @@ import {
 const initialState = {
   movies: null,
   nominations: [],
+  search: '',
   loading: false,
   error: null
 };
@@ -20,13 +21,15 @@ export default (state = initialState, action) => {
     case SEARCH_MOVIES:
       return {
         ...state,
-        movies: action.payload,
+        movies: action.payload.data,
+        search: action.payload.text,
         loading: false
       };
     case CLEAR_MOVIES:
       return {
         ...state,
-        movies: null
+        movies: null,
+        search: ''
       };
     case ADD_NOMINATION:
       return {

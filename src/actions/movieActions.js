@@ -28,7 +28,7 @@ export const searchMovies = (text) => async (dispatch) => {
     } else {
       dispatch({
         type: SEARCH_MOVIES,
-        payload: res.data.Search
+        payload: { data: res.data.Search, text }
       });
     }
   } catch (err) {
