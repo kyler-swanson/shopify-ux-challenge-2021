@@ -4,7 +4,7 @@ import { deleteNomination } from '../../actions/movieActions';
 import PropTypes from 'prop-types';
 
 import { Avatar, List, Button, Tooltip, Badge, notification } from 'antd';
-import { CloseOutlined } from '@ant-design/icons';
+import { CloseOutlined, EllipsisOutlined } from '@ant-design/icons';
 
 const NominationItem = ({ id, movie, deleteNomination }) => {
   const { imdbID, Title, Year, Poster } = movie;
@@ -35,7 +35,15 @@ const NominationItem = ({ id, movie, deleteNomination }) => {
   );
 
   return (
-    <List.Item className='draggable' actions={[removeButton]}>
+    <List.Item
+      className='draggable'
+      actions={[removeButton]}
+      style={{ padding: '15px' }}
+    >
+      <EllipsisOutlined
+        rotate={90}
+        style={{ fontSize: '18px', marginRight: '10px' }}
+      />
       <List.Item.Meta
         avatar={
           <Badge count={id} style={{ backgroundColor: '#52c41a' }}>
