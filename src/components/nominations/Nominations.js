@@ -16,10 +16,11 @@ const Nominations = ({ nominations, orderNominations }) => {
     showNominations(nominations);
   };
 
+  // adapted from https://codesandbox.io/s/50w9wz7j4x
   const onDragEnd = (fromIndex, toIndex) => {
-    if (toIndex < 0) return;
+    if (toIndex < 0) return; // prevent item from being moved to a negative index
 
-    const currNominations = [...nominations];
+    const currNominations = [...nominations]; // create duplicate of state to prevent mutation
     const newNom = currNominations.splice(fromIndex, 1)[0];
     currNominations.splice(toIndex, 0, newNom);
     orderNominations(currNominations);

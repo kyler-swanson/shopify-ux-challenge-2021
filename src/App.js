@@ -10,6 +10,7 @@ import { Layout } from 'antd';
 
 const App = () => {
   useEffect(() => {
+    // if the user has no saved nominations in localStorage, show the welcome modal
     if (!localStorage.getItem('saved_nominations')) {
       showWelcomeModal();
     }

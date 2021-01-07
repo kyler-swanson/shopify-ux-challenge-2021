@@ -9,11 +9,12 @@ import { LikeOutlined, SmileOutlined } from '@ant-design/icons';
 const MovieItem = ({ movie, nominations, addNomination }) => {
   const { imdbID, Title, Year, Poster } = movie;
   const isNominated = nominations.some((m) => m.imdbID === imdbID);
-  const canNominate = nominations.length < 5;
+  const canNominate = nominations.length < 5; // to disable button if noms === 5
 
   const onNomination = () => {
     addNomination(movie);
 
+    // show success notification on nom added
     notification['success']({
       message: 'Movie Nominated',
       description: (

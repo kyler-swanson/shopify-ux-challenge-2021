@@ -8,6 +8,7 @@ import MovieItem from './MovieItem';
 const { Text } = Typography;
 
 const Movies = ({ movie: { movies, search, loading } }) => {
+  // determine secondary title depending on movies state
   const cardTitle = (
     <>
       Movies

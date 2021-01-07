@@ -12,6 +12,7 @@ const NominationItem = ({ id, movie, deleteNomination }) => {
   const onDelete = () => {
     deleteNomination(movie);
 
+    // show success notification on nom deleted
     notification['info']({
       message: 'Nomination Removed',
       description: (
@@ -22,6 +23,7 @@ const NominationItem = ({ id, movie, deleteNomination }) => {
     });
   };
 
+  // button used to remove nom
   const removeButton = (
     <Tooltip title='Remove'>
       <Button
@@ -37,9 +39,11 @@ const NominationItem = ({ id, movie, deleteNomination }) => {
   return (
     <List.Item
       className='draggable'
+      draggable
       actions={[removeButton]}
       style={{ padding: '15px' }}
     >
+      {/* used to implicate that list item is draggable */}
       <EllipsisOutlined
         rotate={90}
         style={{ fontSize: '18px', marginRight: '10px' }}

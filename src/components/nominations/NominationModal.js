@@ -9,6 +9,7 @@ export const showNominations = (nominations) => {
     zIndex: 5000
   });
 
+  // cascade nominations by showing one every second
   for (let i = 0; i < nominations.length; i++) {
     setTimeout(() => {
       modal.update((prevConfig) => ({

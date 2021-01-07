@@ -11,7 +11,7 @@ const Search = ({ searchMovies }) => {
   const text = useRef('');
 
   const onSearch = (value) => {
-    text.current.blur();
+    text.current.blur(); // to hide keyboard on mobile when term is searched
     searchMovies(value);
   };
 
