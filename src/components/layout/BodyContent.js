@@ -16,14 +16,11 @@ const BodyContent = ({ movie: { nominations } }) => {
         <Container>
           <Divider plain />
           <Search />
-          <Row
-            gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}
-            style={{ marginTop: '20px' }}
-          >
-            <Col span={12}>
+          <Row gutter={[16, 16]} style={{ marginTop: '20px' }}>
+            <Col xs={24} lg={12}>
               <Movies />
             </Col>
-            <Col span={12}>
+            <Col xs={24} lg={12}>
               <Nominations />
             </Col>
           </Row>
