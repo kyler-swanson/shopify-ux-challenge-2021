@@ -31,7 +31,8 @@ export default (state = initialState, action) => {
         ...state,
         movies: null,
         search: '',
-        error: null
+        error: null,
+        loading: false
       };
     case ADD_NOMINATION:
       return {
@@ -46,7 +47,6 @@ export default (state = initialState, action) => {
         )
       };
     case SET_LOADING:
-      console.log(1);
       return {
         ...state,
         loading: true
@@ -55,7 +55,10 @@ export default (state = initialState, action) => {
       console.error(action.payload);
       return {
         ...state,
-        error: action.payload
+        movies: null,
+        search: '',
+        error: action.payload,
+        loading: false
       };
     default:
       return state;
