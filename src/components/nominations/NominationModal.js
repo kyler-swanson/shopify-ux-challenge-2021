@@ -6,6 +6,7 @@ export const showNominations = (nominations) => {
     icon: <FireTwoTone twoToneColor='#ffae00' />,
     title: 'And the picks are in...',
     content: '',
+    okText: 'Woo!',
     zIndex: 5000
   });
 
