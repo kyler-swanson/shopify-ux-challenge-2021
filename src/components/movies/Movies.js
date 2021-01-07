@@ -11,11 +11,20 @@ const Movies = ({ movie: { movies, search, loading } }) => {
   const cardTitle = (
     <>
       Movies
-      {search.length > 0 && (
+      {movies !== null && search.length > 0 ? (
         <Text type='secondary' style={{ fontSize: '14px' }}>
           <br />
           Showing results for "{search}"
         </Text>
+      ) : (
+        movies !== null &&
+        search.length === 0 &&
+        movies.length !== 0 && (
+          <Text type='secondary' style={{ fontSize: '14px' }}>
+            <br />
+            Showing popular movies...
+          </Text>
+        )
       )}
     </>
   );

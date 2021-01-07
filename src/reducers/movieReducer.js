@@ -6,9 +6,10 @@ import {
   MOVIES_ERROR,
   SET_LOADING
 } from '../actions/types';
+import getPopularMovies from '../util/getPopularMovies';
 
 const initialState = {
-  movies: null,
+  movies: getPopularMovies,
   nominations: [],
   search: '',
   loading: false,
@@ -29,7 +30,7 @@ export default (state = initialState, action) => {
     case CLEAR_MOVIES:
       return {
         ...state,
-        movies: null,
+        movies: getPopularMovies,
         search: '',
         error: null,
         loading: false
