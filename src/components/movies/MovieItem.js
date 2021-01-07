@@ -13,7 +13,7 @@ import {
   Modal
 } from 'antd';
 import { LikeOutlined, SmileOutlined, FireTwoTone } from '@ant-design/icons';
-const { Text } = Typography;
+const { Text, Link } = Typography;
 
 const MovieItem = ({ movie, nominations, addNomination }) => {
   const { imdbID, Title, Year, Poster } = movie;
@@ -43,10 +43,13 @@ const MovieItem = ({ movie, nominations, addNomination }) => {
 
   return (
     <Fragment>
-      <Space align='center'>
+      <Space direction='horizontal'>
         <Avatar src={Poster} />
-        <Text ellipsis={{ rows: 0 }} type='secondary'>
-          <Text>{Title}</Text> {Year}
+        <Text ellipsis type='secondary'>
+          <Link target='_blank' href={`https://www.imdb.com/title/${imdbID}`}>
+            {Title}
+          </Link>{' '}
+          {Year}
         </Text>
       </Space>
       <Tooltip title={isNominated ? 'Nominated!' : 'Nominate'}>
