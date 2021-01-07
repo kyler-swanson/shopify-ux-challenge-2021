@@ -16,7 +16,8 @@ import { LikeOutlined, SmileOutlined, FireTwoTone } from '@ant-design/icons';
 const { Text } = Typography;
 
 const MovieItem = ({ movie, nominations, addNomination }) => {
-  const isNominated = nominations.some((m) => m.imdbID === movie.imdbID);
+  const { imdbID, Title, Year, Poster } = movie;
+  const isNominated = nominations.some((m) => m.imdbID === imdbID);
 
   const onNomination = () => {
     addNomination(movie);
@@ -25,7 +26,8 @@ const MovieItem = ({ movie, nominations, addNomination }) => {
       Modal.info({
         icon: <FireTwoTone twoToneColor='#ffae00' />,
         title: 'And the picks are in...',
-        content: "You've nominated 5 movies for The Shoppies!"
+        content: "You've nominated 5 movies for The Shoppies!",
+        zIndex: 5000
       });
     }
 
@@ -33,7 +35,7 @@ const MovieItem = ({ movie, nominations, addNomination }) => {
       message: 'Movie Nominated',
       description: (
         <span>
-          You've nominated <strong>{movie.Title}</strong> for the Shoppies!
+          You've nominated <strong>{Title}</strong> for the Shoppies!
         </span>
       )
     });
@@ -42,9 +44,9 @@ const MovieItem = ({ movie, nominations, addNomination }) => {
   return (
     <Fragment>
       <Space align='center'>
-        <Avatar src={movie.Poster} />
-        <Text type='secondary'>
-          <Text>{movie.Title}</Text> {movie.Year}
+        <Avatar src={Poster} />
+        <Text ellipsis={{ rows: 0 }} type='secondary'>
+          <Text>{Title}</Text> {Year}
         </Text>
       </Space>
       <Tooltip title={isNominated ? 'Nominated!' : 'Nominate'}>

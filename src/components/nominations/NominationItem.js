@@ -15,7 +15,7 @@ const NominationItem = ({ movie, deleteNomination }) => {
       message: 'Nomination Removed',
       description: (
         <span>
-          You've removed <strong>{movie.Title}</strong> as a nomination!
+          You've removed <strong>{movie.Title}</strong> from the nominations!
         </span>
       )
     });
