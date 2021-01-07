@@ -1,22 +1,23 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Layout, Space } from 'antd';
+import { Typography, Layout, Space } from 'antd';
 import Container from './Container';
 
 const { Header } = Layout;
+const { Title } = Typography;
 
 const NavBar = ({ title }) => {
   return (
-    <Fragment>
-      <Header style={{ backgroundColor: 'white', padding: '0' }}>
-        <Container>
-          <Space direction='vertical'>
-            <h1>{title}</h1>
-          </Space>
-        </Container>
-      </Header>
-    </Fragment>
+    <Header style={{ backgroundColor: 'white', padding: '0' }}>
+      <Container>
+        <Space direction='vertical'>
+          <Title level={3} style={{ margin: '30px 0 0 0' }}>
+            {title}
+          </Title>
+        </Space>
+      </Container>
+    </Header>
   );
 };
 
