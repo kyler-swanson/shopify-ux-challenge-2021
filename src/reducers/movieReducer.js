@@ -11,7 +11,7 @@ import getPopularMovies from '../util/getPopularMovies';
 
 const initialState = {
   movies: getPopularMovies,
-  nominations: [],
+  nominations: JSON.parse(localStorage.getItem('saved_nominations')) || [],
   search: '',
   loading: false,
   error: null

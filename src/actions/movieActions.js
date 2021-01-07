@@ -41,6 +41,12 @@ export const searchMovies = (text) => async (dispatch) => {
 };
 
 export const addNomination = (movie) => {
+  let savedNominations =
+    JSON.parse(localStorage.getItem('saved_nominations')) || [];
+
+  savedNominations.push(movie);
+  localStorage.setItem('saved_nominations', JSON.stringify(savedNominations));
+
   return {
     type: ADD_NOMINATION,
     payload: movie
@@ -48,6 +54,14 @@ export const addNomination = (movie) => {
 };
 
 export const deleteNomination = (movie) => {
+  if (localStorage.getItem('saved_nominations')) {
+    let savedNominations = JSON.parse(
+      localStorage.getItem('saved_nominations')
+    ).filter((m) => m.imdbID !== movie.imdbID);
+
+    localStorage.setItem('saved_nominations', JSON.stringify(savedNominations));
+  }
+
   return {
     type: DELETE_NOMINATION,
     payload: movie
@@ -55,6 +69,7 @@ export const deleteNomination = (movie) => {
 };
 
 export const orderNominations = (movies) => {
+  localStorage.setItem('saved_nominations', JSON.stringify(movies));
   return {
     type: ORDER_NOMINATIONS,
     payload: movies
