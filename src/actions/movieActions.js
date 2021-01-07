@@ -5,6 +5,7 @@ import {
   CLEAR_MOVIES,
   ADD_NOMINATION,
   DELETE_NOMINATION,
+  ORDER_NOMINATIONS,
   MOVIES_ERROR,
   SET_LOADING
 } from '../actions/types';
@@ -50,6 +51,13 @@ export const deleteNomination = (movie) => {
   return {
     type: DELETE_NOMINATION,
     payload: movie
+  };
+};
+
+export const orderNominations = (movies) => {
+  return {
+    type: ORDER_NOMINATIONS,
+    payload: movies
   };
 };
 

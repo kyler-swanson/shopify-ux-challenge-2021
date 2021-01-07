@@ -4,7 +4,8 @@ import {
   ADD_NOMINATION,
   DELETE_NOMINATION,
   MOVIES_ERROR,
-  SET_LOADING
+  SET_LOADING,
+  ORDER_NOMINATIONS
 } from '../actions/types';
 import getPopularMovies from '../util/getPopularMovies';
 
@@ -46,6 +47,11 @@ export default (state = initialState, action) => {
         nominations: state.nominations.filter(
           (movie) => movie.imdbID !== action.payload.imdbID
         )
+      };
+    case ORDER_NOMINATIONS:
+      return {
+        ...state,
+        nominations: action.payload
       };
     case SET_LOADING:
       return {
