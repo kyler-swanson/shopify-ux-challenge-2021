@@ -42,7 +42,15 @@ const NominationItem = ({ id, movie, deleteNomination }) => {
             <Avatar src={Poster} />
           </Badge>
         }
-        title={<a href={`https://www.imdb.com/title/${imdbID}`}>{Title}</a>}
+        title={
+          <a
+            target='_blank'
+            rel='noreferrer'
+            href={`https://www.imdb.com/title/${imdbID}`}
+          >
+            {Title}
+          </a>
+        }
         description={Year}
       />
     </List.Item>

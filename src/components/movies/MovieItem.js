@@ -49,7 +49,15 @@ const MovieItem = ({ movie, nominations, addNomination }) => {
     <List.Item actions={[nominationButton]}>
       <List.Item.Meta
         avatar={<Avatar src={Poster} />}
-        title={<a href={`https://www.imdb.com/title/${imdbID}`}>{Title}</a>}
+        title={
+          <a
+            target='_blank'
+            rel='noreferrer'
+            href={`https://www.imdb.com/title/${imdbID}`}
+          >
+            {Title}
+          </a>
+        }
         description={Year}
       />
     </List.Item>
