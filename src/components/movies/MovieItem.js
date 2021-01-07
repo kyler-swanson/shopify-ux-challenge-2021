@@ -9,6 +9,7 @@ import { LikeOutlined, SmileOutlined } from '@ant-design/icons';
 const MovieItem = ({ movie, nominations, addNomination }) => {
   const { imdbID, Title, Year, Poster } = movie;
   const isNominated = nominations.some((m) => m.imdbID === imdbID);
+  const canNominate = nominations.length < 5;
 
   const onNomination = () => {
     addNomination(movie);
@@ -24,13 +25,21 @@ const MovieItem = ({ movie, nominations, addNomination }) => {
   };
 
   const nominationButton = (
-    <Tooltip title={isNominated ? 'Nominated!' : 'Nominate'}>
+    <Tooltip
+      title={
+        isNominated
+          ? 'Nominated!'
+          : canNominate
+          ? 'Nominate'
+          : "You've already nominated 5 movies!"
+      }
+    >
       <Button
         type='primary'
         style={{ float: 'right' }}
         shape='circle'
         onClick={onNomination}
-        disabled={isNominated || nominations.length >= 5}
+        disabled={isNominated || !canNominate}
         icon={isNominated ? <SmileOutlined /> : <LikeOutlined />}
       />
     </Tooltip>

@@ -4,20 +4,16 @@ import { orderNominations } from '../../actions/movieActions';
 import PropTypes from 'prop-types';
 
 import ReactDragListView from 'react-drag-listview';
-import { Typography, Card, Empty, List, Button, Tooltip, Modal } from 'antd';
-import { SendOutlined, FireTwoTone } from '@ant-design/icons';
+import { Typography, Card, Empty, List, Button, Tooltip } from 'antd';
+import { SendOutlined } from '@ant-design/icons';
 import NominationItem from './NominationItem';
+import { showNominations } from './NominationModal';
 
 const { Text } = Typography;
 
 const Nominations = ({ nominations, orderNominations }) => {
   const submitNominations = () => {
-    Modal.info({
-      icon: <FireTwoTone twoToneColor='#ffae00' />,
-      title: 'And the picks are in...',
-      content: "You've nominated 5 movies for The Shoppies!",
-      zIndex: 5000
-    });
+    showNominations(nominations);
   };
 
   const onDragEnd = (fromIndex, toIndex) => {
