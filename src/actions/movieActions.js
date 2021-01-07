@@ -11,7 +11,7 @@ import {
 
 export const searchMovies = (text) => async (dispatch) => {
   try {
-    setLoading();
+    dispatch(setLoading());
     const res = await axios.get(
       `https://www.omdbapi.com/?apikey=${getApiKey()}&s=${text}`
     );
@@ -39,22 +39,22 @@ export const searchMovies = (text) => async (dispatch) => {
   }
 };
 
-export const addNomination = (movie) => (dispatch) => {
-  dispatch({
+export const addNomination = (movie) => {
+  return {
     type: ADD_NOMINATION,
     payload: movie
-  });
+  };
 };
 
-export const deleteNomination = (movie) => (dispatch) => {
-  dispatch({
+export const deleteNomination = (movie) => {
+  return {
     type: DELETE_NOMINATION,
     payload: movie
-  });
+  };
 };
 
-export const setLoading = () => (dispatch) => {
-  dispatch({
+export const setLoading = () => {
+  return {
     type: SET_LOADING
-  });
+  };
 };
